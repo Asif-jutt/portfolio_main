@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: portfolio-asif-hussain
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run production
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        value: mongodb+srv://asifhussain:asif5115@cluster0.tyqvxzo.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0
+      - key: DEVELOPER_NAME
+        value: Asif Hussain
+      - key: DEVELOPER_EMAIL
+        value: asifhussain5115@gmail.com
+      - key: DEVELOPER_PHONE
+        value: +92 300 1234567
+      - key: DEVELOPER_LOCATION
+        value: Lahore, Punjab, Pakistan
+      - key: DEVELOPER_GITHUB
+        value: https://github.com/Asif-jutt
+      - key: DEVELOPER_LINKEDIN
+        value: https://linkedin.com/in/asif-hussain-uet
+      - key: DEVELOPER_TWITTER
+        value: "#"
+      - key: EMAIL_USER
+        value: asifhussain5115@gmail.com
+      - key: EMAIL_PASS
+        value: umufazevltisxktj
+      - key: JWT_SECRET
+        value: portfolio-admin-secret-key-2024-production-secure-render-deployment
+      - key: SESSION_SECRET
+        value: portfolio-session-secret-2024-production-render
