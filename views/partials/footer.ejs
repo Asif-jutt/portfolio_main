@@ -1,0 +1,73 @@
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">
+                    <i class="fas fa-code"></i>
+                    <span><%= typeof developerName !== 'undefined' ? developerName : 'Developer' %></span>
+                </h3>
+                <p class="footer-description">
+                    Full Stack Developer passionate about creating amazing web experiences and solving complex problems.
+                </p>
+                <div class="social-links">
+                    <% if (typeof developerGithub !== 'undefined' && developerGithub !== '#') { %>
+                    <a href="<%= developerGithub %>" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <% } %>
+                    <% if (typeof developerLinkedin !== 'undefined' && developerLinkedin !== '#') { %>
+                    <a href="<%= developerLinkedin %>" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <% } %>
+                    <% if (typeof developerTwitter !== 'undefined' && developerTwitter !== '#') { %>
+                    <a href="<%= developerTwitter %>" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <% } %>
+                    <% if (typeof developerEmail !== 'undefined') { %>
+                    <a href="mailto:<%= developerEmail %>" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-subtitle">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/" class="footer-link">Home</a></li>
+                    <li><a href="/about" class="footer-link">About</a></li>
+                    <li><a href="/projects" class="footer-link">Projects</a></li>
+                    <li><a href="/skills" class="footer-link">Skills</a></li>
+                    <li><a href="/contact" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4 class="footer-subtitle">Technologies</h4>
+                <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Express</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">
+                    &copy; <span id="current-year"><%= currentYear %></span> 
+                    <%= typeof developerName !== 'undefined' ? developerName : 'Developer' %>. 
+                    All rights reserved.
+                </p>
+                <p class="made-with">
+                    Made with <i class="fas fa-heart"></i> using Node.js & EJS
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

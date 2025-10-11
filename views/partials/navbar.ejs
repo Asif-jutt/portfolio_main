@@ -1,0 +1,70 @@
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span><%= typeof developerName !== 'undefined' ? developerName : 'Asif Hussain' %></span>
+            </a>
+        </div>
+        
+        <div class="nav-menu" id="nav-menu">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="/" class="nav-link <%= title === 'Home' ? 'active' : '' %>">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link <%= title === 'About Me' ? 'active' : '' %>">
+                        <i class="fas fa-user"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/projects" class="nav-link <%= title === 'My Projects' ? 'active' : '' %>">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/skills" class="nav-link <%= title === 'Skills & Experience' ? 'active' : '' %>">
+                        <i class="fas fa-cogs"></i>
+                        <span>Skills</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link <%= title === 'Contact Me' ? 'active' : '' %>">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/cv" class="nav-link <%= title === 'Curriculum Vitae - Asif Hussain' ? 'active' : '' %>" target="_blank">
+                        <i class="fas fa-file-download"></i>
+                        <span>Download CV</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/login" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="nav-toggle" id="nav-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>

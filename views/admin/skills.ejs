@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .admin-layout {
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+        .admin-navbar {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .admin-navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+        }
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .skill-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .skill-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-edit {
+            background: #10b981;
+            color: white;
+        }
+        .btn-edit:hover {
+            background: #059669;
+        }
+        .btn-delete {
+            background: #ef4444;
+            color: white;
+        }
+        .btn-delete:hover {
+            background: #dc2626;
+        }
+        .skill-category {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .skill-level {
+            margin-bottom: 1rem;
+        }
+        .level-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .level-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .level-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        .skill-experience {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .active-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .inactive-badge {
+            background: #6b7280;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .close {
+            color: #aaa;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #000;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .form-checkbox input {
+            width: auto;
+        }
+        .category-colors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .color-option.selected {
+            border-color: #374151;
+        }
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .skill-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .skill-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Admin Navbar -->
+        <nav class="admin-navbar">
+            <div class="container">
+                <div class="admin-logo">
+                    <a href="http://localhost:3000/admin/dashboard" style="text-decoration: none;"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+                </div>
+                <div class="admin-user">
+                    <span>Welcome, <%= user.name || 'Admin' %></span>
+                    <a href="/admin/logout" class="btn btn-outline btn-sm">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Manage Skills</h1>
+                <button class="btn-primary" onclick="openModal('skillModal')">
+                    <i class="fas fa-plus"></i> Add New Skill
+                </button>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="skills-grid">
+                <% skills.forEach(skill => { %>
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div>
+                                <h3 class="skill-name">
+                                    <div class="skill-icon" style="background-color: <%= skill.color || '#3b82f6' %>;">
+                                        <i class="<%= skill.icon || 'fas fa-cog' %>"></i>
+                                    </div>
+                                    <%= skill.name %>
+                                </h3>
+                                <span class="skill-category"><%= skill.category %></span>
+                            </div>
+                            <div class="skill-actions">
+                                <button class="btn-sm btn-edit" onclick="editSkill('<%= skill._id %>')">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-sm btn-delete" onclick="deleteSkill('<%= skill._id %>')">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: <%= skill.level %>%"></div>
+                            </div>
+                            <div class="level-text">
+                                <span>Proficiency</span>
+                                <span><%= skill.level %>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-experience">
+                            <i class="fas fa-clock"></i> <%= skill.years %> years experience
+                        </div>
+                        
+                        <div style="margin-top: 1rem;">
+                            <span class="<%= skill.isActive ? 'active-badge' : 'inactive-badge' %>">
+                                <%= skill.isActive ? 'Active' : 'Inactive' %>
+                            </span>
+                        </div>
+                    </div>
+                <% }); %>
+                
+                <% if (skills.length === 0) { %>
+                    <div class="skill-card" style="grid-column: 1 / -1;">
+                        <p style="text-align: center; color: #6b7280; padding: 2rem;">
+                            <i class="fas fa-cogs" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                            No skills found. Add your first skill to get started!
+                        </p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Skill Modal -->
+    <div id="skillModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add New Skill</h2>
+                <span class="close" onclick="closeModal('skillModal')">&times;</span>
+            </div>
+            
+            <form id="skillForm" onsubmit="submitSkill(event)">
+                <input type="hidden" id="skillId" name="id">
+                
+                <div class="form-group">
+                    <label for="name" class="form-label">Skill Name *</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category" class="form-label">Category *</label>
+                    <select id="category" name="category" class="form-select" required>
+                        <option value="frontend">Frontend Development</option>
+                        <option value="backend">Backend Development</option>
+                        <option value="database">Database & Cloud</option>
+                        <option value="tools">Tools & Others</option>
+                        <option value="mobile">Mobile Development</option>
+                        <option value="cloud">Cloud & DevOps</option>
+                        <option value="other">Other Skills</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="level" class="form-label">Proficiency Level (0-100) *</label>
+                    <input type="range" id="level" name="level" class="form-input" min="0" max="100" value="50" oninput="updateLevelDisplay(this.value)">
+                    <div class="level-text">
+                        <span>Proficiency</span>
+                        <span id="levelDisplay">50%</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="years" class="form-label">Years of Experience *</label>
+                    <input type="number" id="years" name="years" class="form-input" min="0" max="50" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" name="description" class="form-textarea"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="icon" class="form-label">Icon (Font Awesome class)</label>
+                    <input type="text" id="icon" name="icon" class="form-input" placeholder="fas fa-react">
+                </div>
+                
+                <div class="form-group">
+                    <label for="color" class="form-label">Color</label>
+                    <input type="color" id="color" name="color" class="form-input" value="#3b82f6">
+                    <div class="category-colors">
+                        <div class="color-option" style="background: #3b82f6;" onclick="selectColor('#3b82f6')"></div>
+                        <div class="color-option" style="background: #10b981;" onclick="selectColor('#10b981')"></div>
+                        <div class="color-option" style="background: #f59e0b;" onclick="selectColor('#f59e0b')"></div>
+                        <div class="color-option" style="background: #ef4444;" onclick="selectColor('#ef4444')"></div>
+                        <div class="color-option" style="background: #8b5cf6;" onclick="selectColor('#8b5cf6')"></div>
+                        <div class="color-option" style="background: #06b6d4;" onclick="selectColor('#06b6d4')"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="order" class="form-label">Display Order</label>
+                    <input type="number" id="order" name="order" class="form-input" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="isActive" name="isActive" checked>
+                        <label for="isActive" class="form-label">Active Skill</label>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn-sm" onclick="closeModal('skillModal')" style="background: #6b7280; color: white;">Cancel</button>
+                    <button type="submit" class="btn-sm btn-primary">Save Skill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.getElementById('modalTitle').textContent = 'Add New Skill';
+            document.getElementById('skillForm').reset();
+            document.getElementById('skillId').value = '';
+            document.getElementById('levelDisplay').textContent = '50%';
+            document.getElementById('color').value = '#3b82f6';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function updateLevelDisplay(value) {
+            document.getElementById('levelDisplay').textContent = value + '%';
+        }
+
+        function selectColor(color) {
+            document.getElementById('color').value = color;
+            // Remove selected class from all options
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            // Add selected class to clicked option
+            event.target.classList.add('selected');
+        }
+
+        function editSkill(skillId) {
+            // In a real implementation, you would fetch the skill data
+            // For now, we'll just open the modal
+            openModal('skillModal');
+            document.getElementById('modalTitle').textContent = 'Edit Skill';
+            document.getElementById('skillId').value = skillId;
+        }
+
+        function deleteSkill(skillId) {
+            if (confirm('Are you sure you want to delete this skill?')) {
+                fetch(`/admin/skills/${skillId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error deleting skill: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error deleting skill');
+                });
+            }
+        }
+
+        function submitSkill(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const skillId = document.getElementById('skillId').value;
+            const url = skillId ? `/admin/skills/${skillId}` : '/admin/skills';
+            const method = skillId ? 'PUT' : 'POST';
+            
+            const data = {
+                name: formData.get('name'),
+                category: formData.get('category'),
+                level: parseInt(formData.get('level')),
+                years: formData.get('years'),
+                description: formData.get('description'),
+                icon: formData.get('icon'),
+                color: formData.get('color'),
+                order: formData.get('order'),
+                isActive: document.getElementById('isActive').checked
+            };
+
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    closeModal('skillModal');
+                    location.reload();
+                } else {
+                    alert('Error saving skill: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error saving skill');
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize level displays on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const levelBars = document.querySelectorAll('.level-fill');
+            levelBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

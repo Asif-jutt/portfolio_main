@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "E-Commerce Platform",
+    "description": "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, payment integration, and admin dashboard.",
+    "technologies": ["React", "Node.js", "Express", "MongoDB", "Stripe API", "JWT"],
+    "image": "/images/project1.jpg",
+    "github": "https://github.com/yourusername/ecommerce-platform",
+    "demo": "https://your-ecommerce-demo.com",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "Task Management App",
+    "description": "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+    "technologies": ["React", "Socket.io", "Express", "PostgreSQL", "Redis"],
+    "image": "/images/project2.jpg",
+    "github": "https://github.com/yourusername/task-manager",
+    "demo": "https://your-task-manager-demo.com",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "Weather Dashboard",
+    "description": "A responsive weather dashboard that displays current weather and 5-day forecast for any location worldwide using weather APIs.",
+    "technologies": ["JavaScript", "HTML5", "CSS3", "Weather API", "Chart.js"],
+    "image": "/images/project3.jpg",
+    "github": "https://github.com/yourusername/weather-dashboard",
+    "demo": "https://your-weather-demo.com",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "name": "Blog Platform",
+    "description": "A modern blog platform with markdown support, comment system, and SEO optimization built with Next.js and headless CMS.",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Contentful", "Vercel"],
+    "image": "/images/project4.jpg",
+    "github": "https://github.com/yourusername/blog-platform",
+    "demo": "https://your-blog-demo.com",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "name": "Social Media Analytics",
+    "description": "A comprehensive social media analytics dashboard that tracks engagement, follower growth, and content performance across multiple platforms.",
+    "technologies": ["React", "D3.js", "Node.js", "MongoDB", "Social Media APIs"],
+    "image": "/images/project5.jpg",
+    "github": "https://github.com/yourusername/social-analytics",
+    "demo": "https://your-analytics-demo.com",
+    "featured": true
+  },
+  {
+    "id": 6,
+    "name": "Recipe Finder App",
+    "description": "A mobile-first recipe discovery app with advanced filtering, meal planning, and grocery list generation features.",
+    "technologies": ["React Native", "Firebase", "Redux", "Spoonacular API"],
+    "image": "/images/project6.jpg",
+    "github": "https://github.com/yourusername/recipe-finder",
+    "demo": "https://your-recipe-demo.com",
+    "featured": false
+  }
+]

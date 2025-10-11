@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - <%= developerName %></title>
+    <meta name="description" content="Professional developer portfolio showcasing skills, projects, and experience">
+    <meta name="keywords" content="developer, portfolio, web development, full stack, javascript, react, nodejs">
+    <meta name="author" content="<%= developerName %>">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="greeting">Hello, I'm</span>
+                            <span class="name"><%= developerName %></span>
+                            <span class="title"><%= developerTitle %></span>
+                        </h1>
+                        <p class="hero-description">
+                            I create exceptional digital experiences through clean code, innovative design, 
+                            and cutting-edge technologies. Passionate about building scalable web applications 
+                            that make a difference.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="/projects" class="btn btn-primary">
+                                <i class="fas fa-folder-open"></i>
+                                View My Work
+                            </a>
+                            <a href="/cv" class="btn btn-secondary" target="_blank">
+                                <i class="fas fa-file-download"></i>
+                                Download CV
+                            </a>
+                            <a href="/contact" class="btn btn-outline">
+                                <i class="fas fa-envelope"></i>
+                                Get In Touch
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">20+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">2+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Client Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-avatar">
+                            <img src="/images/profilePic.jpeg" alt="<%= developerName %>" class="avatar-img">
+                            <div class="avatar-badge">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-element element-1">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="floating-element element-2">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="floating-element element-3">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="floating-element element-4">
+                                <i class="fas fa-database"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="featured-projects" id="featured-projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Some of my recent work that I'm proud of</p>
+                </div>
+                <div class="projects-grid">
+                    <% featuredProjects.forEach((project, index) => { %>
+                        <div class="project-card" data-aos="fade-up" data-aos-delay="<%= project.id * 100 %>">
+                            <div class="project-image">
+                                <img src="<%= project.image %>" alt="<%= project.name %>" loading="lazy">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="<%= project.demo %>" target="_blank" rel="noopener" class="project-link" aria-label="Live Demo">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="<%= project.github %>" target="_blank" rel="noopener" class="project-link" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title"><%= project.name %></h3>
+                                <p class="project-description"><%= project.description %></p>
+                                <div class="project-technologies">
+                                    <% project.technologies.forEach(tech => { %>
+                                        <span class="tech-tag"><%= tech %></span>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+                <div class="section-footer">
+                    <a href="/projects" class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i>
+                        View All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Preview Section -->
+        <section class="skills-preview" id="skills-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What I Do</h2>
+                    <p class="section-subtitle">Technologies and services I specialize in</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="skill-title">Frontend Development</h3>
+                        <p class="skill-description">Creating responsive and interactive user interfaces with modern frameworks and libraries.</p>
+                        <ul class="skill-list">
+                            <li>React & Vue.js</li>
+                            <li>JavaScript & TypeScript</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>Tailwind CSS</li>
+                            <li>Bootstrap & MUI Reac</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="skill-title">Backend Development</h3>
+                        <p class="skill-description">Building robust server-side applications and APIs with scalable architectures.</p>
+                        <ul class="skill-list">
+                            <li>Node.js & Express</li>
+                            <li>Python</li>
+                            <li>REST & GraphQL APIs</li>
+                            <li>Microservices</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="skill-title">Database & Cloud</h3>
+                        <p class="skill-description">Designing efficient database schemas and deploying applications to the cloud.</p>
+                        <ul class="skill-list">
+                            <li>MongoDB & SQL</li>
+                            <li>MYSQL & Post SQL</li>
+                            <li>Docker </li>
+                            <li>CI/CD Pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity Section -->
+        <section class="github-activity" id="github-activity">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">My Development Activity</h2>
+                    <p class="section-subtitle">Consistent coding and project delivery</p>
+                </div>
+                
+                <div class="github-stats-container">
+                    <div class="github-graph-container">
+                        <div class="github-graph-header">
+                            <h3>Recent GitHub Activity</h3>
+                            <p>Showing my commitment to continuous development and timely project delivery</p>
+                        </div>
+                        
+                        <!-- GitHub Contribution Graph -->
+                        <div class="github-contribution-graph">
+                            <img src="https://ghchart.rshah.org/28a745/Asif-jutt" alt="GitHub Contribution Graph - Asif Hussain" class="github-chart">
+                        </div>  
+                        
+                        <div class="github-stats-grid">
+                            <div class="github-stat">
+                                <div class="stat-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">Repositories</span>
+                                </div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">1000</span>
+                                    <span class="stat-label">Stars Earned</span>
+                                </div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">100+</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                            </div>
+                            <div class="github-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number">Uet</span>
+                                    <span class="stat-label">Lahore</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="github-commitment">
+                            <div class="commitment-content">
+                                <h4><i class="fas fa-check-circle"></i> Consistent Development</h4>
+                                <p>Regular commits show my dedication to continuous learning and project improvement</p>
+                            </div>
+                            <div class="commitment-content">
+                                <h4><i class="fas fa-rocket"></i> Timely Delivery</h4>
+                                <p>Active development patterns demonstrate my ability to meet project deadlines</p>
+                            </div>
+                            <div class="commitment-content">
+                                <h4><i class="fas fa-users"></i> Collaborative Work</h4>
+                                <p>Contributions to various repositories showcase teamwork and code sharing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to work together?</h2>
+                    <p class="cta-description">
+                        I'm always interested in new opportunities and exciting projects. 
+                        Let's discuss how we can bring your ideas to life.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="/contact" class="btn btn-primary btn-large">
+                            <i class="fas fa-envelope"></i>
+                            Start a Conversation
+                        </a>
+                        <a href="/about" class="btn btn-outline btn-large">
+                            <i class="fas fa-user"></i>
+                            Learn More About Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/animations.js"></script>
+</body>
+</html>

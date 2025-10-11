@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - <%= developerName %></title>
+    <meta name="description" content="Learn more about my background, skills, and experience as a full stack developer">
+    <meta name="keywords" content="about, developer, experience, skills, background">
+    <meta name="author" content="<%= developerName %>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title">About Me</h1>
+                    <p class="page-subtitle">Get to know more about my journey and passion for development</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content">
+            <div class="container">
+                <div class="about-grid">
+                    <!-- About Text -->
+                    <div class="about-text">
+                        <div class="about-card professional-card">
+                            <div class="about-header">
+                                <h2 class="about-title">My Professional Journey</h2>
+                                <div class="about-badge">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Scholarship Holder</span>
+                                </div>
+                            </div>
+                            
+                            <div class="about-content-wrapper">
+                                <div class="intro-section">
+                                    <div class="intro-highlight">
+                                        <div class="intro-profile">
+                                            <img src="/images/profilePic.jpeg" alt="Asif Hussain" class="intro-profile-img">
+                                            <div class="intro-text">
+                                                <h3 class="intro-title">Asif Hussain</h3>
+                                                <p class="intro-subtitle">MERN Stack Developer | UET Lahore</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="about-description lead-paragraph">
+                                        I'm a dedicated Computer Science student at the University of Engineering and Technology (UET) Lahore, 
+                                        currently pursuing my Bachelor's degree with an expected graduation in 2027. As a scholarship holder, 
+                                        I've demonstrated academic excellence and unwavering commitment to advancing my technical expertise.
+                                    </p>
+                                </div>
+
+                                <div class="passion-section">
+                                    <div class="section-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="section-content">
+                                        <h4 class="section-heading">Technical Excellence</h4>
+                                        <p class="about-description">
+                                            My passion lies in leveraging cutting-edge technology to solve complex real-world problems and create 
+                                            meaningful digital experiences. Through rigorous self-directed learning, I've mastered various 
+                                            modern technologies including Python, .NET, AI/ML, and the complete MERN stack, always staying 
+                                            current with industry best practices and emerging trends.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="mission-section">
+                                    <div class="section-icon">
+                                        <i class="fas fa-target"></i>
+                                    </div>
+                                    <div class="section-content">
+                                        <h4 class="section-heading">Client-Centric Approach</h4>
+                                        <p class="about-description">
+                                            What drives me is my unwavering dedication to client success and project excellence. I believe that 
+                                            technology should serve people, not the other way around. Every project I undertake is approached 
+                                            with meticulous attention to detail, ensuring that solutions not only meet requirements but 
+                                            consistently exceed expectations. Based in Lahore, Punjab, I'm ready to bring innovative ideas 
+                                            to life and help businesses achieve their digital transformation goals.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="achievements-grid">
+                                    <div class="achievement-item">
+                                        <i class="fas fa-university"></i>
+                                        <span>UET Lahore</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-medal"></i>
+                                        <span>Scholarship</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Lahore, Pakistan</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>Graduating 2027</span>
+                                    </div>
+                                </div>
+
+                                <div class="cv-download-section">
+                                    <h4>📄 Professional CV Available</h4>
+                                    <p>Download my comprehensive CV to learn more about my qualifications, projects, and achievements.</p>
+                                    <a href="/cv" class="btn btn-secondary" target="_blank">
+                                        <i class="fas fa-file-download"></i>
+                                        Download CV (PDF)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Image -->
+                    <div class="about-image">
+                        <div class="image-container">
+                            <img src="/images/profilePic.jpeg" alt="<%= developerName %>" class="about-img">
+                            <div class="image-overlay">
+                                <div class="contact-info">
+                                    <div class="contact-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span><%= developerEmail %></span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-phone"></i>
+                                        <span><%= developerPhone %></span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span><%= developerLocation %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Technologies and tools I work with</p>
+                </div>
+                
+                <div class="skills-categories">
+                    <% Object.keys(skills).forEach((category, index) => { %>
+                        <div class="skill-category" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <h3 class="category-title">
+                                <% if (category === 'frontend') { %>
+                                    <i class="fas fa-laptop-code"></i> Frontend
+                                <% } else if (category === 'backend') { %>
+                                    <i class="fas fa-server"></i> Backend
+                                <% } else if (category === 'database') { %>
+                                    <i class="fas fa-database"></i> Database
+                                <% } else if (category === 'tools') { %>
+                                    <i class="fas fa-tools"></i> Tools
+                                <% } %>
+                            </h3>
+                            <div class="skills-list">
+                                <% skills[category].forEach(skill => { %>
+                                    <span class="skill-tag"><%= skill %></span>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Education & Achievements</h2>
+                    <p class="section-subtitle">My academic journey and accomplishments</p>
+                </div>
+                
+                <div class="timeline">
+                    <% experience.forEach((exp, index) => { %>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <div class="timeline-marker">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title"><%= exp.title %></h3>
+                                <h4 class="timeline-company"><%= exp.company %></h4>
+                                <span class="timeline-period"><%= exp.period %></span>
+                                <p class="timeline-description"><%= exp.description %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Let's Work Together</h2>
+                    <p class="cta-description">
+                        I'm always interested in new opportunities and exciting projects. 
+                        Feel free to reach out if you'd like to collaborate!
+                    </p>
+                    <a href="/contact" class="btn btn-primary btn-large">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/animations.js"></script>
+</body>
+</html>

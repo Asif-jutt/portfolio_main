@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <main id="main-content">
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title"><%= project.name %></h1>
+                    <p class="page-subtitle"><%= project.category ? project.category.toUpperCase() : 'PROJECT' %></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-detail-section">
+            <div class="container">
+                <div class="project-detail-grid">
+                    <div class="project-media">
+                        <img src="<%= project.image %>" alt="<%= project.name %>" style="width:100%; border-radius: 1rem;" />
+                    </div>
+                    <div class="project-info">
+                        <h2 class="section-title">Overview</h2>
+                        <p class="project-description"><%= project.description %></p>
+                        <div class="project-technologies" style="margin: 1rem 0; display:flex; flex-wrap:wrap; gap:.5rem;">
+                            <% project.technologies.forEach(tech => { %>
+                                <span class="tech-tag"><%= tech %></span>
+                            <% }) %>
+                        </div>
+                        <div class="project-actions" style="display:flex; gap:.75rem;">
+                            <a href="<%= project.demo %>" target="_blank" rel="noopener" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="<%= project.github %>" target="_blank" rel="noopener" class="btn btn-outline">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Interested in similar work?</h2>
+                    <p class="cta-description">Let's build something great together.</p>
+                    <a href="/contact" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Contact Me</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

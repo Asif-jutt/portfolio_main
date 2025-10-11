@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - <%= typeof developerName !== 'undefined' ? developerName : 'Developer' %></title>
+    <meta name="description" content="Explore my technical skills, certifications, and professional experience">
+    <meta name="keywords" content="skills, experience, certifications, technologies, programming">
+    <meta name="author" content="<%= typeof developerName !== 'undefined' ? developerName : 'Developer' %>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title">Skills & Experience</h1>
+                    <p class="page-subtitle">Technical expertise and professional certifications</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Overview -->
+        <section class="skills-overview">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Technologies I work with and my proficiency levels</p>
+                </div>
+                
+                <div class="skills-container">
+                    <% Object.keys(skillCategories).forEach((category, categoryIndex) => { %>
+                        <div class="skill-category" data-aos="fade-up" data-aos-delay="<%= categoryIndex * 100 %>">
+                            <div class="category-header">
+                                <h3 class="category-title"><%= category %></h3>
+                                <div class="category-color" style="background-color: <%= skillCategories[category].color %>"></div>
+                            </div>
+                            <div class="skills-list">
+                                <% skillCategories[category].skills.forEach((skill, skillIndex) => { %>
+                                    <div class="skill-item" data-aos="fade-right" data-aos-delay="<%= (categoryIndex * 100) + (skillIndex * 50) %>">
+                                        <div class="skill-info">
+                                            <span class="skill-name"><%= skill.name %></span>
+                                            <span class="skill-experience"><%= skill.years %></span>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <div class="skill-progress" 
+                                                 style="width: <%= skill.level %>%; background-color: <%= skillCategories[category].color %>"
+                                                 data-width="<%= skill.level %>">
+                                            </div>
+                                        </div>
+                                        <span class="skill-percentage"><%= skill.level %>%</span>
+                                    </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Information Section -->
+        <section class="personal-info-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About My Learning Journey</h2>
+                    <p class="section-subtitle">Self-motivated learner with passion for continuous skill development</p>
+                </div>
+                
+                <div class="personal-info-card">
+                    <div class="info-content">
+                        <h3><%= personalInfo.name %></h3>
+                        <p class="education"><%= personalInfo.education %></p>
+                        <p class="scholarship"><%= personalInfo.scholarship %></p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> <%= personalInfo.location %></p>
+                        <p class="github-link">
+                            <i class="fab fa-github"></i> 
+                            <a href="<%= personalInfo.github %>" target="_blank">GitHub Profile</a>
+                        </p>
+                        <p class="learning-approach"><%= personalInfo.learningApproach %></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Online Learning Courses Section -->
+        <section class="online-courses-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Online Learning & Courses</h2>
+                    <p class="section-subtitle">Continuous learning through online platforms and self-study</p>
+                </div>
+                
+                <div class="courses-grid">
+                    <% onlineCourses.forEach((course, index) => { %>
+                        <div class="course-card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                            <div class="course-icon">
+                                <% if (course.name.includes('Python')) { %>
+                                    <i class="fab fa-python"></i>
+                                <% } else if (course.name.includes('.NET')) { %>
+                                    <i class="fas fa-code"></i>
+                                <% } else if (course.name.includes('AI') || course.name.includes('Machine Learning')) { %>
+                                    <i class="fas fa-brain"></i>
+                                <% } else if (course.name.includes('Game')) { %>
+                                    <i class="fas fa-gamepad"></i>
+                                <% } else { %>
+                                    <i class="fas fa-laptop-code"></i>
+                                <% } %>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-name"><%= course.name %></h3>
+                                <p class="course-platform"><%= course.platform %></p>
+                                <p class="course-description"><%= course.description %></p>
+                                <span class="course-status <%= course.status.toLowerCase().replace(' ', '-') %>">
+                                    <i class="fas fa-<%= course.status === 'Completed' ? 'check-circle' : 'clock' %>"></i>
+                                    <%= course.status %>
+                                </span>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Journey Timeline -->
+        <section class="experience-timeline">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">My Learning Journey</h2>
+                    <p class="section-subtitle">Academic progress and skill development milestones</p>
+                </div>
+                
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-items">
+                        <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                            <div class="timeline-marker">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">UET Lahore Admission</h3>
+                                <span class="timeline-period">2023</span>
+                                <p class="timeline-description">
+                                    Started my Bachelor's degree in Computer Science at University of Engineering and Technology Lahore. 
+                                    Secured scholarship based on academic merit.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                            <div class="timeline-marker">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Python Programming Mastery</h3>
+                                <span class="timeline-period">2023</span>
+                                <p class="timeline-description">
+                                    Completed comprehensive Python programming course covering fundamentals, data structures, 
+                                    and object-oriented programming concepts.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                            <div class="timeline-marker">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">AI & Machine Learning</h3>
+                                <span class="timeline-period">2023-2024</span>
+                                <p class="timeline-description">
+                                    Explored artificial intelligence fundamentals, machine learning algorithms, 
+                                    and data science concepts through online learning platforms.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+                            <div class="timeline-marker">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">Game Development</h3>
+                                <span class="timeline-period">2024</span>
+                                <p class="timeline-description">
+                                    Learned game development principles, Unity basics, and game design concepts 
+                                    to expand my programming skills beyond web development.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-right" data-aos-delay="500">
+                            <div class="timeline-marker">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">MERN Stack Development</h3>
+                                <span class="timeline-period">2024</span>
+                                <p class="timeline-description">
+                                    Mastered full-stack development with MongoDB, Express.js, React, and Node.js. 
+                                    Built multiple projects including E-Commerce and Todo applications.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item" data-aos="fade-left" data-aos-delay="600">
+                            <div class="timeline-marker">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3 class="timeline-title">.NET Development</h3>
+                                <span class="timeline-period">2024 - Present</span>
+                                <p class="timeline-description">
+                                    Currently learning C# and .NET framework for enterprise application development 
+                                    to expand my backend development capabilities.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Collaborate?</h2>
+                    <p class="cta-description">
+                        I'm always excited to work on new projects and share my expertise. 
+                        Let's discuss how we can work together!
+                    </p>
+                    <a href="/contact" class="btn btn-primary btn-large">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/skills-animations.js"></script>
+</body>
+</html>
